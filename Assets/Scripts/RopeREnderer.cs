@@ -6,16 +6,30 @@ public class RopeREnderer : MonoBehaviour
 {
     public Transform pivot;     // •R‚Ìx“_
     public Transform weight;    // •R‚Ìæid‚èj
-    public float ropeLength = 5f; // •R‚Ì’·‚³
+    public float ropeLength = 1.2f; // •R‚Ì’·‚³
     private LineRenderer lineRenderer;
 
     public HingeJoint2D hinge;
     public float extendSpeed = 0.5f; // 1•b‚Å0.5’PˆÊL‚Ñ‚é
 
-    private float targetAnchorY = 8f;
+    private float targetAnchorY = 1f;
 
     void FixedUpdate()
     {
+
+        if (this.gameObject.name == "Omori")
+        {
+            targetAnchorY = -10;
+        }
+        if (this.gameObject.name == "Circle (8)")
+        {
+            targetAnchorY = -10;
+        }
+        if (this.gameObject.name == "Circle (9)")
+        {
+            targetAnchorY = -10;
+        }
+
         Vector2 dir = weight.position - pivot.position;
         float dist = dir.magnitude;
 
