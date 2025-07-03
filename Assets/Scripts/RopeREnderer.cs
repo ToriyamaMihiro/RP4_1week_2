@@ -14,9 +14,8 @@ public class RopeREnderer : MonoBehaviour
 
     private float targetAnchorY = 1f;
 
-    void FixedUpdate()
+    private void Start()
     {
-
         if (this.gameObject.name == "Omori")
         {
             targetAnchorY = -10;
@@ -30,6 +29,12 @@ public class RopeREnderer : MonoBehaviour
             targetAnchorY = -10;
         }
 
+        
+    }
+
+    void FixedUpdate()
+    {
+
         Vector2 dir = weight.position - pivot.position;
         float dist = dir.magnitude;
 
@@ -39,7 +44,7 @@ public class RopeREnderer : MonoBehaviour
             weight.position = correctedPos;
         }
 
-       // targetAnchorY += extendSpeed * Time.deltaTime;
+      // targetAnchorY += extendSpeed * Time.deltaTime;
 
         Vector2 anchor = hinge.anchor;
         anchor.y = targetAnchorY;

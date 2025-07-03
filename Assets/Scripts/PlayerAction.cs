@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class PlayerAction : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private HingeJoint2D hinge;
+    [SerializeField] GameObject sphere;
+
     void Start()
     {
-        
+        sphere = GameObject.Find("Omori");
+        hinge = GetComponent<HingeJoint2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //a
-        //iiii
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            hinge.connectedBody = null;
+            sphere.GetComponent<RopeREnderer>().enabled = false;
+            sphere.GetComponent<HingeJoint2D>().enabled = false;
+        }
     }
 }
