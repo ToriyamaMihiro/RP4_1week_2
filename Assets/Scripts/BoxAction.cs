@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoxAction : MonoBehaviour
 {
 
-    int timer = 180;
+    public int timer = 180;
 
 
     bool isHit;
@@ -29,7 +29,7 @@ public class BoxAction : MonoBehaviour
         if (isHit)
         {
             timer--;
-            
+
             if (timer <= 0)
             {
                 isExplosion = true;
