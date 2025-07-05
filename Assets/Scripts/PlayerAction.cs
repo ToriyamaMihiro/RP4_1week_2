@@ -35,7 +35,7 @@ public class PlayerAction : MonoBehaviour
 
     void Finish()
     {
-        lightPower--;
+        //lightPower--;
         //Œo‰ßŠÔ‚ªI‚í‚éŠÔ‚ğ‰ß‚¬‚½‚ç
         if (lightPower <= 0)
         {
@@ -52,9 +52,9 @@ public class PlayerAction : MonoBehaviour
         if (collision.collider.tag == "Box")
         {
             //“–‚½‚Á‚½‚çŒõ‚ª‘‚¦‚é
-            lightPower += lightAddPower;
+            //lightPower += lightAddPower;
             GameObject box = collision.gameObject;
-            box.SetActive(false);
+            //box.SetActive(false);
 
             //BoxManager‚É—Š‚ñ‚ÅÄ•\¦‚µ‚Ä‚à‚ç‚¤
             BoxManager.Instance.RespawnBox(box, 10f);

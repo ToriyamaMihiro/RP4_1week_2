@@ -452,11 +452,11 @@ HingeJoint2D:
   m_GameObject: {fileID: 1942708777}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 783888422}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
+  m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0.0000002104789, y: -7.1400003}
   m_UseMotor: 0
@@ -584,7 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetAngle: 0
-  springStrength: 0
+  springStrength: 1
   damping: 2
 --- !u!114 &1942708784
 MonoBehaviour:
