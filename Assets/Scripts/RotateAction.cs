@@ -10,13 +10,14 @@ public class RotateAction : MonoBehaviour
     void Start()
     {
         line = GetComponent<LineRenderer>();
-        line.material = new Material(Shader.Find("Unlit/Color"));
+       // line.material = new Material(Shader.Find("Unlit/Color"));
         line.positionCount = vertices.Length;
 
         foreach (GameObject v in vertices)
         {
             v.GetComponent<SpriteRenderer>().enabled = false;
         }
+
     }
 
     void Update()
