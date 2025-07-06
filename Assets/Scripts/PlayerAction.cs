@@ -33,6 +33,22 @@ public class PlayerAction : MonoBehaviour
 
     }
 
+    void Range()
+    {
+        //現在のポジションを保持する
+        Vector3 currentPos = transform.position;
+
+        //Mathf.ClampでX,Yの値それぞれが最小～最大の範囲内に収める。
+        //物理挙動のあるisTriggerにしたいが、床は突き抜けてほしくないので無理やり範囲を決めて落ちないようにする
+        currentPos.x = Mathf.Clamp(currentPos.x, -8.27f, 8.27f);
+        currentPos.y = Mathf.Clamp(currentPos.y, -4.37f, 4.37f);
+
+        //positionをcurrentPosにする
+        transform.position = currentPos;
+
+    }
+
+
     void Finish()
     {
         //lightPower--;

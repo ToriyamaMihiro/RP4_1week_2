@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 243188602259020200}
   - component: {fileID: 243188602259020201}
+  - component: {fileID: 640712966}
   m_Layer: 0
   m_Name: BoxManager
   m_TagString: Untagged
@@ -44,3 +45,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fe4a1775887e84ea0bda0e6ceb6795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &640712966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243188602259020214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f7845b86898ad43adc1e277aa41e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombList:
+  - position: {x: 2, y: 1, z: 0}
+    delay: 5
+  - position: {x: 5, y: 5, z: 0}
+    delay: 5
+  bombPrefab: {fileID: 1659925926532421399, guid: b72463d3ae631fe488fea3e6be043d26, type: 3}
