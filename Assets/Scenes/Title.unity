@@ -575,5 +575,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireFlowerParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 5302395209969154037, guid: 06eeb5400504c8546af606cd52793595, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06eeb5400504c8546af606cd52793595, type: 3}
