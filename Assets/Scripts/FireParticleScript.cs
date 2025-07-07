@@ -8,6 +8,8 @@ public class FireParticleScript : MonoBehaviour
     [SerializeField] Vector2 randomPos = Vector2.zero;
     [SerializeField] float bornTime = 1;
     [SerializeField] bool isBorn = false;
+    [SerializeField] Vector2 posXrange = Vector2.zero;
+    [SerializeField] Vector2 posYrange = Vector2.zero;
     [SerializeField] Vector3 pos= Vector3.zero;//プレイヤーの位置
 
     public GameObject particle;
@@ -23,8 +25,8 @@ public class FireParticleScript : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > bornTime && !isBorn)
         {
-            randomPos.x = Random.Range(-1.5f, 1.5f);
-            randomPos.y = Random.Range(-1.5f, 1.5f);
+            randomPos.x = Random.Range(posXrange.x, posXrange.y);
+            randomPos.y = Random.Range(posYrange.x, posYrange.y);
             isBorn = true;
         }
 
