@@ -1,23 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAction : MonoBehaviour
 {
+
+    public Slider slider;
+
     private HingeJoint2D hinge;
     [SerializeField] GameObject sphere;
 
-    int lightPower = 100;
+    int lightMaxPower = 100;
+    int lightCurrentPower;
     int lightAddPower = 40;
+    int lightMainasuPower = 1;
 
     int finishTimer = 200;//終わるまでの時間
     int timer;//経過時間
+
+    float lightTimer = 0f;//１秒ごとに光値を減らしたいのでそれ用のタイマー
 
     bool isLeave;//紐から外れたか falseでくっついてる
 
     void Start()
     {
-
+        slider.value = 1;
+        lightCurrentPower = lightMaxPower;
         sphere = GameObject.Find("Omori");
         hinge = GetComponent<HingeJoint2D>();
     }
@@ -30,7 +39,19 @@ public class PlayerAction : MonoBehaviour
 
     void Light()
     {
+        lightTimer += Time.deltaTime;
+        // 1秒経過したら実行
+        if (lightTimer >= 1f)
+        {
+            // 値を減らす
+            lightCurrentPower -= lightMainasuPower;
 
+            // ゲージ更新
+            slider.value = (float)lightCurrentPower / (float)lightMaxPower;
+
+            // タイマーリセット
+            lightTimer = 0f;
+        }
     }
 
     void Range()
@@ -53,7 +74,7 @@ public class PlayerAction : MonoBehaviour
     {
         //lightPower--;
         //経過時間が終わる時間を過ぎたら
-        if (lightPower <= 0)
+        if (lightMaxPower <= 0)
         {
             //おもりが落ちる
             isLeave = true;
