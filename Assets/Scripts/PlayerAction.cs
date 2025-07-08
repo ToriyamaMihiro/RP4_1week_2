@@ -28,9 +28,11 @@ public class PlayerAction : MonoBehaviour
     int comboTime;
     int comboNum;
     int currentTime;
+    int comboBounusNum = 5;
 
     int finishTimer = 100;//終わるまでの時間
     int timer;//経過時間
+    int scoreUp = 1000;
 
     float lightTimer = 0f;//１秒ごとに光値を減らしたいのでそれ用のタイマー
 
@@ -38,6 +40,7 @@ public class PlayerAction : MonoBehaviour
     bool isCombo;//現在コンボ中か
     public bool isClear;
     public bool isDeath;
+    bool isScoreUp;
 
 
     [SerializeField] public static bool isExplosion;
@@ -57,6 +60,7 @@ public class PlayerAction : MonoBehaviour
         Light();
         Finish();
         Combo();
+        ScoreUp();
     }
 
     void Light()
@@ -91,6 +95,23 @@ public class PlayerAction : MonoBehaviour
 
     // }
 
+    void ScoreUp()
+    {
+        if (comboNum % comboBounusNum == 0 && !isScoreUp)
+        {
+            scoreUp += 500;
+            isScoreUp = true;
+        }
+        if (comboNum % comboBounusNum == 1)
+        {
+            isScoreUp = false;
+        }
+
+        if (comboNum == 0)
+        {
+            scoreUp = 1000;
+        }
+    }
 
     void Finish()
     {

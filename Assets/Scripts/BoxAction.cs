@@ -70,7 +70,7 @@ public class BoxAction : MonoBehaviour
             Instantiate(bomParticle, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);//爆発パーティクル
 
             //スコアアップ
-            PlayerAction.playerScore += scorePoint;
+           // PlayerAction.playerScore += scorePoint;
             PlayerAction.isExplosion = true;
             gameObject.SetActive(false);
 
