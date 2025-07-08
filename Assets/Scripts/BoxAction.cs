@@ -52,6 +52,7 @@ public class BoxAction : MonoBehaviour
             {
                 isExplosion = true;
                 isHit = false;
+                
             }
         }
 
