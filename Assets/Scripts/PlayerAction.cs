@@ -158,7 +158,7 @@ public class PlayerAction : MonoBehaviour
             //box.SetActive(false);
 
             //BoxManagerに頼んで再表示してもらう
-            BoxManager.Instance.RespawnBox(box, 10f);
+            BoxManager.Instance.RespawnBox(box, 15f);
         }
 
         if (collision.collider.tag == "Goal" && isLeave)
