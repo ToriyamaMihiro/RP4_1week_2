@@ -8,11 +8,13 @@ public class BoxAction : MonoBehaviour
 
     public int timer = 180;
     public int maxTime = 180;
+    public int addLightPower = 50;
+
     public float scorePoint = 1000;
     public Sprite hitSprite;
     public Sprite normalSprite;
     bool isHit;
-    bool isExplosion;
+    public bool isExplosion;
 
     private BoxParticle particleScript;
     private SpriteRenderer mainSpriteRenderer;
@@ -24,7 +26,7 @@ public class BoxAction : MonoBehaviour
         mainSpriteRenderer = GetComponent<SpriteRenderer>();
         particleScript = GetComponent<BoxParticle>();
         timer = maxTime;
-        
+
     }
 
     // Update is called once per frame
@@ -49,15 +51,23 @@ public class BoxAction : MonoBehaviour
             }
         }
 
-        if (isExplosion) {
+        if (isExplosion)
+        {
             timer = maxTime;
             mainSpriteRenderer.sprite = normalSprite;
             particleScript.enabled = false;
             Instantiate(bomParticle, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);//爆発パーティクル
             //スコアアップ
             PlayerAction.playerScore += scorePoint;
-            isExplosion = false;
+            PlayerAction.isExplosion = true;
             gameObject.SetActive(false);
+
+            PlayerAction player;
+            GameObject obj = GameObject.FindWithTag("Player");
+            player = obj.GetComponent<PlayerAction>();
+
+            player.lightCurrentPower += addLightPower;
+
         }
     }
 

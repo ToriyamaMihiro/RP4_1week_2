@@ -127,9 +127,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 180
   maxTime: 180
+  addLightPower: 1
   scorePoint: 1000
   hitSprite: {fileID: 21300000, guid: 9e73ec2d63adf8740b8408e53b22f7c8, type: 3}
   normalSprite: {fileID: 21300000, guid: c19ea0ab2748553479c625c487ec526c, type: 3}
+  isExplosion: 0
   bomParticle: {fileID: 5302395209969154037, guid: 06eeb5400504c8546af606cd52793595, type: 3}
 --- !u!114 &-8945818521581467858
 MonoBehaviour:

@@ -31,12 +31,24 @@ public class SceneChangeManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                nowSceneIndexNumber = SceneManager.GetActiveScene().buildIndex;
 
+                SceneManager.LoadScene(nowSceneIndexNumber);
+            }
+
+            PlayerAction player;
+            GameObject obj = GameObject.FindWithTag("Player");
+            player = obj.GetComponent<PlayerAction>();
+
+            if (player.isClear)
+            {
                 SceneManager.LoadScene(++nowSceneIndexNumber);
             }
 
-       
+            if (player.isDeath)
+            {
+                SceneManager.LoadScene(++nowSceneIndexNumber);
+            }
+
 
         }
         if (SceneManager.GetActiveScene().name == "Result")

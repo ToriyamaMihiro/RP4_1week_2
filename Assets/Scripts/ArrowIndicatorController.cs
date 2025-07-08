@@ -22,6 +22,7 @@ public class ArrowIndicatorController : MonoBehaviour
 
     void Update()
     {
+
         Vector3 goalViewportPos = cam.WorldToViewportPoint(goal.position);
         bool isOnScreen = goalViewportPos.x >= 0 && goalViewportPos.x <= 1 &&
                           goalViewportPos.y >= 0 && goalViewportPos.y <= 1 &&

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,26 +8,38 @@ public class PlayerAction : MonoBehaviour
 {
 
     public Slider slider;
+    public Slider comboSlider;
     [SerializeField] public static float playerScore;
     [SerializeField] GameObject sphere;
 
     private HingeJoint2D hinge;
 
-    int lightMaxPower = 50;//制限時間の最大
-    int lightCurrentPower;//今の時間
+    public int lightMaxPower = 10;//制限時間の最大
+    public int lightCurrentPower;//今の時間
     int lightAddPower = 40;
     int lightMainasuPower = 1;
+    int comboMaxTime = 200;//コンボ受付時間
+    int comboTime;
+    int comboNum;
+    int currentTime;
 
-    int finishTimer = 200;//終わるまでの時間
+    int finishTimer = 100;//終わるまでの時間
     int timer;//経過時間
 
     float lightTimer = 0f;//１秒ごとに光値を減らしたいのでそれ用のタイマー
 
     bool isLeave;//紐から外れたか falseでくっついてる
+    bool isCombo;//現在コンボ中か
+    public bool isClear;
+    public bool isDeath;
+
+
+    [SerializeField] public static bool isExplosion;
 
     void Start()
     {
         slider.value = 1;
+        currentTime = comboMaxTime;
         lightCurrentPower = lightMaxPower;
         sphere = GameObject.Find("Omori");
         hinge = GetComponent<HingeJoint2D>();
@@ -36,6 +49,7 @@ public class PlayerAction : MonoBehaviour
     {
         Light();
         Finish();
+        Combo();
     }
 
     void Light()
@@ -83,7 +97,51 @@ public class PlayerAction : MonoBehaviour
             sphere.GetComponent<RopeREnderer>().enabled = false;
             sphere.GetComponent<HingeJoint2D>().enabled = false;
         }
+        if (isLeave)
+        {
+            finishTimer--;
+            if (finishTimer <= 0)
+            {
+                isDeath = true;
+            }
+        }
     }
+
+    void Combo()
+    {
+
+        BoxAction box;
+        GameObject obj = GameObject.FindWithTag("Box");
+        box = obj.GetComponent<BoxAction>();
+
+
+        if (isExplosion)
+        {
+            //コンボ回数を増やす
+            comboNum++;
+            isCombo = true;
+            comboTime = comboMaxTime;
+            currentTime = comboMaxTime;
+            isExplosion = false;
+        }
+        if (isCombo)
+        {
+            comboTime--;
+            currentTime = currentTime - 1;
+
+            comboSlider.value = (float)currentTime / (float)comboMaxTime;
+
+        }
+        //もしコンボ受付時間が0になったらコンボをリセット
+        if (comboTime <= 0)
+        {
+            comboNum = 0;
+            isCombo = false;
+            comboTime = comboMaxTime;
+        }
+    }
+
+
     void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -100,7 +158,7 @@ public class PlayerAction : MonoBehaviour
 
         if (collision.collider.tag == "Goal" && isLeave)
         {
-            Debug.Log("クリア！");
+            isClear = true;
         }
     }
 }
