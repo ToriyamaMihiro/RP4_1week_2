@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,9 @@ public class PlayerAction : MonoBehaviour
     public Slider comboSlider;
     [SerializeField] public static float playerScore;
     [SerializeField] GameObject sphere;
+
+    [SerializeField]
+    TextMeshProUGUI ComboCountText;
 
     private HingeJoint2D hinge;
 
@@ -108,6 +112,8 @@ public class PlayerAction : MonoBehaviour
 
     void Combo()
     {
+
+        ComboCountText.SetText("{0}", comboNum);
 
         BoxAction box;
         GameObject obj = GameObject.FindWithTag("Box");

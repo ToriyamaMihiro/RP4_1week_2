@@ -73,6 +73,7 @@ public class BoxAction : MonoBehaviour
 
             player.lightCurrentPower += addLightPower;
 
+            isExplosion = false;
         }
     }
 
