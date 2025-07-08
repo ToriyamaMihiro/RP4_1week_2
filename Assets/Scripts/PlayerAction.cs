@@ -11,7 +11,7 @@ public class PlayerAction : MonoBehaviour
     private HingeJoint2D hinge;
     [SerializeField] GameObject sphere;
 
-    int lightMaxPower = 100;
+    int lightMaxPower = 50;
     int lightCurrentPower;
     int lightAddPower = 40;
     int lightMainasuPower = 1;
@@ -74,7 +74,7 @@ public class PlayerAction : MonoBehaviour
     {
         //lightPower--;
         //Œo‰ßŠÔ‚ªI‚í‚éŠÔ‚ğ‰ß‚¬‚½‚ç
-        if (lightMaxPower <= 0)
+        if (lightCurrentPower <= 0)
         {
             //‚¨‚à‚è‚ª—‚¿‚é
             isLeave = true;
