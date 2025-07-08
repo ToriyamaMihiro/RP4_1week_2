@@ -2164,7 +2164,7 @@ MonoBehaviour:
   slider: {fileID: 1899309052}
   comboSlider: {fileID: 1179180952}
   sphere: {fileID: 575217083}
-  goalHeadObj: {fileID: 0}
+  goalHeadObj: {fileID: 1643009597}
   ComboCountText: {fileID: 1294876064}
   lightMaxPower: 50
   lightCurrentPower: 0
