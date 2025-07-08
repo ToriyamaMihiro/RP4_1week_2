@@ -21,7 +21,7 @@ public class PlayerAction : MonoBehaviour
     private SpriteRenderer SR;
 
     public int lightMaxPower = 10;//制限時間の最大
-    public int lightCurrentPower;//今の時間
+    public float lightCurrentPower;//今の時間
     int lightAddPower = 40;
     int lightMainasuPower = 1;
     int comboMaxTime = 200;//コンボ受付時間
@@ -100,6 +100,7 @@ public class PlayerAction : MonoBehaviour
         if (comboNum % comboBounusNum == 0 && !isScoreUp)
         {
             scoreUp += 500;
+            comboMaxTime -= 25;
             isScoreUp = true;
         }
         if (comboNum % comboBounusNum == 1)
@@ -110,6 +111,7 @@ public class PlayerAction : MonoBehaviour
         if (comboNum == 0)
         {
             scoreUp = 1000;
+            comboMaxTime = 200;
         }
     }
 
@@ -151,6 +153,7 @@ public class PlayerAction : MonoBehaviour
             isCombo = true;
             comboTime = comboMaxTime;
             currentTime = comboMaxTime;
+            playerScore += scoreUp;
             isExplosion = false;
         }
         if (isCombo)
@@ -171,10 +174,10 @@ public class PlayerAction : MonoBehaviour
     }
 
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.collider.tag == "Box")
+        if (collision.gameObject.tag == "Box")
         {
             //当たったら光が増える
             //lightPower += lightAddPower;
@@ -185,10 +188,10 @@ public class PlayerAction : MonoBehaviour
             BoxManager.Instance.RespawnBox(box, 15f);
         }
 
-        if (collision.collider.tag == "Goal" && isLeave)
+        if (collision.gameObject.tag == "Goal" && isLeave)
         {
             isClear = true;
-            playerScore += 10000;
+            playerScore += 30000;
             goalHeadObj.SetActive(true);
             SR.enabled = false;
         }

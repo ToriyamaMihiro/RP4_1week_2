@@ -98,7 +98,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 180
   maxTime: 180
-  addLightPower: 1
+  addLightPower: 0.5
   scorePoint: 1000
   hitSprite: {fileID: 21300000, guid: 9e73ec2d63adf8740b8408e53b22f7c8, type: 3}
   normalSprite: {fileID: 21300000, guid: c19ea0ab2748553479c625c487ec526c, type: 3}

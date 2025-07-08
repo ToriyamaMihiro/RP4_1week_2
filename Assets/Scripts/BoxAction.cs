@@ -9,7 +9,7 @@ public class BoxAction : MonoBehaviour
 
     public int timer = 180;
     public int maxTime = 180;
-    public int addLightPower = 50;
+    public float addLightPower = 50;
 
     public float scorePoint = 1000;
     public Sprite hitSprite;
@@ -84,10 +84,10 @@ public class BoxAction : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.collider.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             isHit = true;
         }

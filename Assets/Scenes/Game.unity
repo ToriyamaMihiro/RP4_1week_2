@@ -333,7 +333,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 633d87fcad0a6cb44948e0fe7b167418, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8039216, b: 0.16470589, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -351,8 +351,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101396560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.608616, y: 3.9476595, z: 10.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 43.6, y: -7, z: 10.1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 967226279}
@@ -2106,7 +2106,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 4688a4f3f77a5f54185a28a36b8a6fa4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2166,7 +2166,7 @@ MonoBehaviour:
   sphere: {fileID: 575217083}
   goalHeadObj: {fileID: 1643009597}
   ComboCountText: {fileID: 1294876064}
-  lightMaxPower: 50
+  lightMaxPower: 40
   lightCurrentPower: 0
   isClear: 0
   isDeath: 0
@@ -2314,7 +2314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96be796bf52a0be41b80d77f782935ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 25
+  moveSpeed: 20
   exhaustedSpeed: 10
   maxStamina: 100
   currentStamina: 0
@@ -4357,7 +4357,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863265467}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1399999, y: 0.6999998, z: 0.2}
+  m_LocalPosition: {x: 1.1399999, y: 0.6999998, z: 0.4}
   m_LocalScale: {x: 1.4, y: 1.4, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4404,7 +4404,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ee790ad3977647247a60d19a30b98cf9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4767,7 +4767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
       propertyPath: bombList.Array.size
-      value: 13
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
       propertyPath: bombList.Array.data[2].delay
@@ -4811,6 +4811,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
       propertyPath: bombList.Array.data[12].delay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
+      propertyPath: bombList.Array.data[13].delay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
+      propertyPath: bombList.Array.data[14].delay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
+      propertyPath: bombList.Array.data[15].delay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
+      propertyPath: bombList.Array.data[16].delay
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
@@ -4940,6 +4956,38 @@ PrefabInstance:
     - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
       propertyPath: bombList.Array.data[12].position.y
       value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
+      propertyPath: bombList.Array.data[13].position.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
+      propertyPath: bombList.Array.data[13].position.y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
+      propertyPath: bombList.Array.data[14].position.x
+      value: -13
+      objectReference: {fileID: 0}
+    - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
+      propertyPath: bombList.Array.data[14].position.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
+      propertyPath: bombList.Array.data[15].position.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
+      propertyPath: bombList.Array.data[15].position.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
+      propertyPath: bombList.Array.data[16].position.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
+      propertyPath: bombList.Array.data[16].position.y
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 640712966, guid: 79fefaa40b052554f83d5dbf96e25431, type: 3}
       propertyPath: boxList.Array.data[0].explodeDelay
@@ -5091,6 +5139,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3344387982725739776, guid: f8845032e3eab6246ae32d51738d0bb8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3344387982725739776, guid: f8845032e3eab6246ae32d51738d0bb8, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3344387982725739776, guid: f8845032e3eab6246ae32d51738d0bb8, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3344387982725739777, guid: f8845032e3eab6246ae32d51738d0bb8, type: 3}
       propertyPath: m_Name
       value: Goal
