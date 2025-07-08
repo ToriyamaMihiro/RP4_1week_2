@@ -11,7 +11,7 @@ public class SceneChangeManager : MonoBehaviour
     {
 
         Application.targetFrameRate = 60;
-        Screen.SetResolution(1280, 720, false);
+        //Screen.SetResolution(1280, 720, false);
     }
 
     // Update is called once per frame
