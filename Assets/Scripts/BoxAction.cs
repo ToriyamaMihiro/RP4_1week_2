@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
@@ -18,7 +19,10 @@ public class BoxAction : MonoBehaviour
 
     private BoxParticle particleScript;
     private SpriteRenderer mainSpriteRenderer;
+    private AudioSource mainAudioSource;
     public GameObject bomParticle;
+    public AudioClip fireSound;
+    public AudioClip hitSound;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +30,7 @@ public class BoxAction : MonoBehaviour
         mainSpriteRenderer = GetComponent<SpriteRenderer>();
         particleScript = GetComponent<BoxParticle>();
         timer = maxTime;
-
+        mainAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -57,6 +61,7 @@ public class BoxAction : MonoBehaviour
             mainSpriteRenderer.sprite = normalSprite;
             particleScript.enabled = false;
             Instantiate(bomParticle, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);//爆発パーティクル
+            mainAudioSource.PlayOneShot(fireSound);//音
             //スコアアップ
             PlayerAction.playerScore += scorePoint;
             PlayerAction.isExplosion = true;
