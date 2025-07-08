@@ -134,8 +134,6 @@ MonoBehaviour:
   normalSprite: {fileID: 21300000, guid: c19ea0ab2748553479c625c487ec526c, type: 3}
   isExplosion: 0
   bomParticle: {fileID: 5302395209969154037, guid: 06eeb5400504c8546af606cd52793595, type: 3}
-  fireSound: {fileID: 8300000, guid: dd9b382604d19464ebdd973d88950a61, type: 3}
-  hitSound: {fileID: 8300000, guid: 61f0012813859774baed6ff4a8b2c98a, type: 3}
 --- !u!114 &-8945818521581467858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,9 +164,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.879
+  m_audioClip: {fileID: 8300000, guid: 61f0012813859774baed6ff4a8b2c98a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.244
   m_Pitch: 1
   Loop: 0
   Mute: 0

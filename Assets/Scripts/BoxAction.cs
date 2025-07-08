@@ -21,8 +21,7 @@ public class BoxAction : MonoBehaviour
     private SpriteRenderer mainSpriteRenderer;
     private AudioSource mainAudioSource;
     public GameObject bomParticle;
-    public AudioClip fireSound;
-    public AudioClip hitSound;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +35,12 @@ public class BoxAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    mainAudioSource.PlayOneShot(fireSound);
+        //}
+
         Explosion();
     }
 
@@ -47,7 +52,7 @@ public class BoxAction : MonoBehaviour
             timer--;
             mainSpriteRenderer.sprite = hitSprite;
             particleScript.enabled = true;
-
+            
             if (timer <= 0)
             {
                 isExplosion = true;
@@ -55,6 +60,7 @@ public class BoxAction : MonoBehaviour
                 
             }
         }
+        
 
         if (isExplosion)
         {
@@ -62,7 +68,7 @@ public class BoxAction : MonoBehaviour
             mainSpriteRenderer.sprite = normalSprite;
             particleScript.enabled = false;
             Instantiate(bomParticle, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);//爆発パーティクル
-            mainAudioSource.PlayOneShot(fireSound);//音
+
             //スコアアップ
             PlayerAction.playerScore += scorePoint;
             PlayerAction.isExplosion = true;
