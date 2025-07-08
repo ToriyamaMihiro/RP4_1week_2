@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1659925926532421398}
   - component: {fileID: 1659925926532421392}
   - component: {fileID: -7477454237689186916}
+  - component: {fileID: -8945818521581467858}
   m_Layer: 0
   m_Name: Box
   m_TagString: Box
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1659925926532421399}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.43, y: -2.15, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c19ea0ab2748553479c625c487ec526c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -124,3 +125,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6243748e5f8b96d40b2afe1b50ea47d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 180
+  maxTime: 180
+  scorePoint: 1000
+  hitSprite: {fileID: 21300000, guid: 9e73ec2d63adf8740b8408e53b22f7c8, type: 3}
+  normalSprite: {fileID: 21300000, guid: c19ea0ab2748553479c625c487ec526c, type: 3}
+  bomParticle: {fileID: 5302395209969154037, guid: 06eeb5400504c8546af606cd52793595, type: 3}
+--- !u!114 &-8945818521581467858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659925926532421399}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac424782d8c1ed4db804e82896020f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  randomPos: {x: 0, y: 0}
+  bornTime: 0.1
+  isBorn: 0
+  posXrange: {x: -0.5, y: 0.5}
+  posYrange: {x: 0, y: 1}
+  pos: {x: 0, y: 0, z: 0}
+  particle: {fileID: 7550743513111007822, guid: 3b8c76a1cc399c746a27ec45599b7bf6, type: 3}

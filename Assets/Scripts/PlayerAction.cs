@@ -7,21 +7,22 @@ public class PlayerAction : MonoBehaviour
 {
 
     public Slider slider;
-
-    private HingeJoint2D hinge;
+    [SerializeField] public static float playerScore;
     [SerializeField] GameObject sphere;
 
-    int lightMaxPower = 50;
-    int lightCurrentPower;
+    private HingeJoint2D hinge;
+
+    int lightMaxPower = 50;//åˆ¶é™æ™‚é–“ã®æœ€å¤§
+    int lightCurrentPower;//ä»Šã®æ™‚é–“
     int lightAddPower = 40;
     int lightMainasuPower = 1;
 
-    int finishTimer = 200;//I‚í‚é‚Ü‚Å‚ÌŠÔ
-    int timer;//Œo‰ßŠÔ
+    int finishTimer = 200;//çµ‚ã‚ã‚‹ã¾ã§ã®æ™‚é–“
+    int timer;//çµŒéæ™‚é–“
 
-    float lightTimer = 0f;//‚P•b‚²‚Æ‚ÉŒõ’l‚ğŒ¸‚ç‚µ‚½‚¢‚Ì‚Å‚»‚ê—p‚Ìƒ^ƒCƒ}[
+    float lightTimer = 0f;//ï¼‘ç§’ã”ã¨ã«å…‰å€¤ã‚’æ¸›ã‚‰ã—ãŸã„ã®ã§ãã‚Œç”¨ã®ã‚¿ã‚¤ãƒãƒ¼
 
-    bool isLeave;//•R‚©‚çŠO‚ê‚½‚© false‚Å‚­‚Á‚Â‚¢‚Ä‚é
+    bool isLeave;//ç´ã‹ã‚‰å¤–ã‚ŒãŸã‹ falseã§ãã£ã¤ã„ã¦ã‚‹
 
     void Start()
     {
@@ -40,31 +41,31 @@ public class PlayerAction : MonoBehaviour
     void Light()
     {
         lightTimer += Time.deltaTime;
-        // 1•bŒo‰ß‚µ‚½‚çÀs
+        // 1ç§’çµŒéã—ãŸã‚‰å®Ÿè¡Œ
         if (lightTimer >= 1f)
         {
-            // ’l‚ğŒ¸‚ç‚·
+            // å€¤ã‚’æ¸›ã‚‰ã™
             lightCurrentPower -= lightMainasuPower;
 
-            // ƒQ[ƒWXV
+            // ã‚²ãƒ¼ã‚¸æ›´æ–°
             slider.value = (float)lightCurrentPower / (float)lightMaxPower;
 
-            // ƒ^ƒCƒ}[ƒŠƒZƒbƒg
+            // ã‚¿ã‚¤ãƒãƒ¼ãƒªã‚»ãƒƒãƒˆ
             lightTimer = 0f;
         }
     }
 
     void Range()
     {
-        //Œ»İ‚Ìƒ|ƒWƒVƒ‡ƒ“‚ğ•Û‚·‚é
+        //ç¾åœ¨ã®ãƒã‚¸ã‚·ãƒ§ãƒ³ã‚’ä¿æŒã™ã‚‹
         Vector3 currentPos = transform.position;
 
-        //Mathf.Clamp‚ÅX,Y‚Ì’l‚»‚ê‚¼‚ê‚ªÅ¬`Å‘å‚Ì”ÍˆÍ“à‚Éû‚ß‚éB
-        //•¨—‹““®‚Ì‚ ‚éisTrigger‚É‚µ‚½‚¢‚ªA°‚Í“Ë‚«”²‚¯‚Ä‚Ù‚µ‚­‚È‚¢‚Ì‚Å–³—‚â‚è”ÍˆÍ‚ğŒˆ‚ß‚Ä—‚¿‚È‚¢‚æ‚¤‚É‚·‚é
+        //Mathf.Clampã§X,Yã®å€¤ãã‚Œãã‚ŒãŒæœ€å°ï½æœ€å¤§ã®ç¯„å›²å†…ã«åã‚ã‚‹ã€‚
+        //ç‰©ç†æŒ™å‹•ã®ã‚ã‚‹isTriggerã«ã—ãŸã„ãŒã€åºŠã¯çªãæŠœã‘ã¦ã»ã—ããªã„ã®ã§ç„¡ç†ã‚„ã‚Šç¯„å›²ã‚’æ±ºã‚ã¦è½ã¡ãªã„ã‚ˆã†ã«ã™ã‚‹
         currentPos.x = Mathf.Clamp(currentPos.x, -8.27f, 8.27f);
         currentPos.y = Mathf.Clamp(currentPos.y, -4.37f, 4.37f);
 
-        //position‚ğcurrentPos‚É‚·‚é
+        //positionã‚’currentPosã«ã™ã‚‹
         transform.position = currentPos;
 
     }
@@ -73,10 +74,10 @@ public class PlayerAction : MonoBehaviour
     void Finish()
     {
         //lightPower--;
-        //Œo‰ßŠÔ‚ªI‚í‚éŠÔ‚ğ‰ß‚¬‚½‚ç
+        //çµŒéæ™‚é–“ãŒçµ‚ã‚ã‚‹æ™‚é–“ã‚’éããŸã‚‰
         if (lightCurrentPower <= 0)
         {
-            //‚¨‚à‚è‚ª—‚¿‚é
+            //ãŠã‚‚ã‚ŠãŒè½ã¡ã‚‹
             isLeave = true;
             hinge.connectedBody = null;
             sphere.GetComponent<RopeREnderer>().enabled = false;
@@ -88,18 +89,18 @@ public class PlayerAction : MonoBehaviour
 
         if (collision.collider.tag == "Box")
         {
-            //“–‚½‚Á‚½‚çŒõ‚ª‘‚¦‚é
+            //å½“ãŸã£ãŸã‚‰å…‰ãŒå¢—ãˆã‚‹
             //lightPower += lightAddPower;
             GameObject box = collision.gameObject;
             //box.SetActive(false);
 
-            //BoxManager‚É—Š‚ñ‚ÅÄ•\¦‚µ‚Ä‚à‚ç‚¤
+            //BoxManagerã«é ¼ã‚“ã§å†è¡¨ç¤ºã—ã¦ã‚‚ã‚‰ã†
             BoxManager.Instance.RespawnBox(box, 10f);
         }
 
         if (collision.collider.tag == "Goal" && isLeave)
         {
-            Debug.Log("ƒNƒŠƒAI");
+            Debug.Log("ã‚¯ãƒªã‚¢ï¼");
         }
     }
 }
