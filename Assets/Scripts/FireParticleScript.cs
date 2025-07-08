@@ -44,5 +44,15 @@ public class FireParticleScript : MonoBehaviour
             isBorn = false;
 
         }
+
+
+        PlayerAction playerScript;
+        GameObject obj = GameObject.FindWithTag("Player");
+        playerScript = obj.GetComponent<PlayerAction>();
+        if (playerScript.lightCurrentPower < 30)
+        {
+            bornTime = 0.2f;
+        }
+        
     }
 }

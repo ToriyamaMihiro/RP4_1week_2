@@ -12,11 +12,13 @@ public class PlayerAction : MonoBehaviour
     public Slider comboSlider;
     [SerializeField] public static float playerScore;
     [SerializeField] GameObject sphere;
+    [SerializeField] GameObject goalHeadObj;
 
     [SerializeField]
     TextMeshProUGUI ComboCountText;
 
     private HingeJoint2D hinge;
+    private SpriteRenderer SR;
 
     public int lightMaxPower = 10;//制限時間の最大
     public int lightCurrentPower;//今の時間
@@ -47,6 +49,7 @@ public class PlayerAction : MonoBehaviour
         lightCurrentPower = lightMaxPower;
         sphere = GameObject.Find("Omori");
         hinge = GetComponent<HingeJoint2D>();
+        SR = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -164,6 +167,9 @@ public class PlayerAction : MonoBehaviour
         if (collision.collider.tag == "Goal" && isLeave)
         {
             isClear = true;
+            playerScore += 10000;
+            goalHeadObj.SetActive(true);
+            SR.enabled = false;
         }
     }
 }
