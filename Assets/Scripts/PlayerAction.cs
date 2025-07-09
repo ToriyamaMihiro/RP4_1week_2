@@ -53,6 +53,7 @@ public class PlayerAction : MonoBehaviour
         sphere = GameObject.Find("Omori");
         hinge = GetComponent<HingeJoint2D>();
         SR = GetComponent<SpriteRenderer>();
+        playerScore = 0;
     }
 
     void Update()
