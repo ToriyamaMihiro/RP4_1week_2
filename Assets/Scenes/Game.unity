@@ -1983,7 +1983,7 @@ GameObject:
   - component: {fileID: 575217092}
   - component: {fileID: 575217093}
   m_Layer: 6
-  m_Name: Omori
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2315,12 +2315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
-  exhaustedSpeed: 10
-  maxStamina: 100
-  currentStamina: 0
-  staminaPerUnit: 0.5
-  staminaRecoveryPerSecond: 15
-  recoveryThreshold: 20
+  mouseUpdateThreshold: 5
 --- !u!1 &744891469 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4024505661470746262, guid: 821dac3ff65c5c24986df327ddf6adc2, type: 3}
@@ -5254,7 +5249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4024505661470746262, guid: 821dac3ff65c5c24986df327ddf6adc2, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Hand
       objectReference: {fileID: 0}
     - target: {fileID: 5608893926040924695, guid: 821dac3ff65c5c24986df327ddf6adc2, type: 3}
       propertyPath: hinge

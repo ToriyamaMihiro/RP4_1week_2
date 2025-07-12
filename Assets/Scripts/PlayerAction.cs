@@ -13,6 +13,7 @@ public class PlayerAction : MonoBehaviour
     [SerializeField] public static float playerScore;
     [SerializeField] GameObject sphere;
     [SerializeField] GameObject goalHeadObj;
+    [SerializeField] GameObject copy;
 
     [SerializeField]
     TextMeshProUGUI ComboCountText;
@@ -33,6 +34,7 @@ public class PlayerAction : MonoBehaviour
     int finishTimer = 100;//終わるまでの時間
     int timer;//経過時間
     int scoreUp = 1000;
+    public int life = 3;
 
     float lightTimer = 0f;//１秒ごとに光値を減らしたいのでそれ用のタイマー
 
@@ -40,6 +42,9 @@ public class PlayerAction : MonoBehaviour
     bool isCombo;//現在コンボ中か
     public bool isClear;
     public bool isDeath;
+    bool isCanSee = true;//
+    public bool isOnemoreCheck;
+    bool isRest;
     bool isScoreUp;
 
 
@@ -62,13 +67,21 @@ public class PlayerAction : MonoBehaviour
         Finish();
         Combo();
         ScoreUp();
+        Onemore();
     }
 
     void Light()
     {
-        lightTimer += Time.deltaTime;
+        if (Input.GetMouseButton(0))
+        {
+            lightTimer += 2;
+        }
+        else
+        {
+            lightTimer += 1;
+        }
         // 1秒経過したら実行
-        if (lightTimer >= 1f)
+        if (lightTimer >= 60f)
         {
             // 値を減らす
             lightCurrentPower -= lightMainasuPower;
@@ -80,6 +93,7 @@ public class PlayerAction : MonoBehaviour
             lightTimer = 0f;
         }
     }
+
 
     //void Range()
     //{
@@ -120,21 +134,21 @@ public class PlayerAction : MonoBehaviour
     {
         //lightPower--;
         //経過時間が終わる時間を過ぎたら
-        if (lightCurrentPower <= 0)
+        if (lightCurrentPower <= 0 && !isLeave)
         {
             //おもりが落ちる
+            Instantiate(copy, gameObject.transform.position, Quaternion.identity);
+            isOnemoreCheck = true;
+            // hinge.connectedBody = null;
+            isCanSee = false;
             isLeave = true;
-            hinge.connectedBody = null;
-            sphere.GetComponent<RopeREnderer>().enabled = false;
-            sphere.GetComponent<HingeJoint2D>().enabled = false;
         }
-        if (isLeave)
+
+        if (life <= 0)
         {
-            if (gameObject.transform.position.y <= -22)
-            {
-                isDeath = true;
-            }
+            isDeath = true;
         }
+
     }
 
     void Combo()
@@ -174,6 +188,37 @@ public class PlayerAction : MonoBehaviour
         }
     }
 
+    void Onemore()
+    {
+
+        if (isOnemoreCheck && !isRest)
+        {
+            Invoke("Reset", 3f);
+            isRest = true;
+        }
+
+
+        if (SR != null)
+        {
+            if (isCanSee)
+            {
+                SR.enabled = true;
+            }
+            else
+            {
+                SR.enabled = false;
+            }
+        }
+    }
+
+    void Reset()
+    {
+        isLeave = false;
+        isCanSee = true;
+        lightCurrentPower = lightMaxPower;
+        isOnemoreCheck = false;
+        isRest = false;
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -191,10 +236,10 @@ public class PlayerAction : MonoBehaviour
 
         if (collision.gameObject.tag == "Goal" && isLeave)
         {
-            isClear = true;
-            playerScore += 30000;
-            goalHeadObj.SetActive(true);
-            SR.enabled = false;
+            //isClear = true;
+            //playerScore += 30000;
+            //goalHeadObj.SetActive(true);
+            //SR.enabled = false;
         }
     }
 }

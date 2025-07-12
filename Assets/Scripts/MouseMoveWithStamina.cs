@@ -3,15 +3,14 @@ using UnityEngine;
 public class MouseMoveWithStamina : MonoBehaviour
 {
     [Header("移動設定")]
-    public float moveSpeed = 20f;
-    public float exhaustedSpeed = 1f;
+    public float moveSpeed = 5f;
     private float currentSpeed;
 
     private Vector3 targetPos;                   // 目標地点
     private Vector3 previousMousePos;
 
     [Header("感度設定")]
-    public float mouseUpdateThreshold = 2f;      // 目標更新に必要なマウス移動距離(px)
+    public float mouseUpdateThreshold = 5f;      // 目標更新に必要なマウス移動距離(px)
 
     void Start()
     {
@@ -32,6 +31,8 @@ public class MouseMoveWithStamina : MonoBehaviour
             targetPos.z = transform.position.z;
             previousMousePos = currentMousePos;
         }
+
+        //スピードによって進んだ距離より移動分が大きければ距離に合わせる
 
         MoveToTarget();
     }
