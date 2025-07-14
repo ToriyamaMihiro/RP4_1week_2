@@ -215,6 +215,7 @@ MonoBehaviour:
   direction: 1
   returnPos: 25
   isChangeDire: 0
+  head: {fileID: 1643009597}
 --- !u!50 &-5444440116687134840
 Rigidbody2D:
   serializedVersion: 4

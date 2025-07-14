@@ -10,6 +10,7 @@ public class GoalMove : MonoBehaviour
     [SerializeField] bool isChangeDire = false;
     private Rigidbody2D rb;
 
+    [SerializeField] GameObject head;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +58,7 @@ public class GoalMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "Omori")
         {
+            head.SetActive(true);
             Invoke("Destroy", 2f);
         }
     }
