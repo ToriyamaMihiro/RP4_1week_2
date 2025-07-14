@@ -33,6 +33,14 @@ public class PlayerCopy : MonoBehaviour
             player = obj.GetComponent<PlayerAction>();
             player.isOnemoreCheck = true;
 
+            GoalSporn goalSporn;
+            GameObject goalObj = GameObject.Find("GoalSporn");
+            goalSporn = goalObj.GetComponent<GoalSporn>();
+            if (goalSporn.isBorn == false)
+            {
+                goalSporn.isBorn = true;
+            }
+
             Destroy(this.gameObject);
 
         }
