@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerCopy : MonoBehaviour
 {
+
+    public bool isGoal=false;
+
+    public GameObject Goal;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +21,7 @@ public class PlayerCopy : MonoBehaviour
         PlayerAction player;
         GameObject obj = GameObject.FindWithTag("Player");
         player = obj.GetComponent<PlayerAction>();
-        if (gameObject.transform.position.y <= -22 )
+        if (gameObject.transform.position.y <= -22)
         {
             player.life--;
             Destroy(this.gameObject);
@@ -32,7 +36,9 @@ public class PlayerCopy : MonoBehaviour
             GameObject obj = GameObject.FindWithTag("Player");
             player = obj.GetComponent<PlayerAction>();
             player.isOnemoreCheck = true;
+            PlayerAction.playerScore += 1000;
 
+            player.isGoal = true;
             GoalSporn goalSporn;
             GameObject goalObj = GameObject.Find("GoalSporn");
             goalSporn = goalObj.GetComponent<GoalSporn>();
@@ -40,6 +46,7 @@ public class PlayerCopy : MonoBehaviour
             {
                 goalSporn.isBorn = true;
             }
+
 
             Destroy(this.gameObject);
 

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8892983113138123169}
   m_Layer: 0
   m_Name: CopyOmori
-  m_TagString: Untagged
+  m_TagString: Omori
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,3 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7e4d4650c895e4291503e7c8b53b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGoal: 0
+  Goal: {fileID: 3344387982725739777, guid: f8845032e3eab6246ae32d51738d0bb8, type: 3}

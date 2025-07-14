@@ -41,6 +41,7 @@ public class PlayerAction : MonoBehaviour
     bool isLeave;//紐から外れたか falseでくっついてる
     bool isCombo;//現在コンボ中か
     public bool isClear;
+    public bool isGoal;
     public bool isDeath;
     bool isCanSee = true;//
     public bool isOnemoreCheck;
@@ -74,7 +75,7 @@ public class PlayerAction : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            lightTimer += 2;
+            lightTimer += 3;
         }
         else
         {
@@ -218,6 +219,7 @@ public class PlayerAction : MonoBehaviour
         lightCurrentPower = lightMaxPower;
         isOnemoreCheck = false;
         isRest = false;
+        isGoal = false;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class ArrowIndicatorController : MonoBehaviour
 {
-    [Header("ターゲット（ゴール）とプレイヤー")]
-    public Transform goal;
+    [Header("プレイヤーのみ指定すればOK")]
     public Transform player;
+    public float edgeBuffer = 0.05f;
 
-    [Header("矢印の表示範囲（Viewport）")]
-    [Range(0f, 0.5f)] public float edgeBuffer = 0.05f;
-
+    private Transform goal;
     private Camera cam;
     private SpriteRenderer spriteRenderer;
 
@@ -22,6 +20,15 @@ public class ArrowIndicatorController : MonoBehaviour
 
     void Update()
     {
+        // ゴールが見つからなければ探す
+        if (goal == null)
+        {
+            GameObject found = GameObject.FindWithTag("Goal");
+            if (found != null)
+                goal = found.transform;
+        }
+
+        if (goal == null || player == null) return;
 
         Vector3 goalViewportPos = cam.WorldToViewportPoint(goal.position);
         bool isOnScreen = goalViewportPos.x >= 0 && goalViewportPos.x <= 1 &&
@@ -40,11 +47,9 @@ public class ArrowIndicatorController : MonoBehaviour
     {
         Vector3 dir = (goal.position - player.position).normalized;
 
-        // 回転
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-        // プレイヤー位置からゴール方向に伸ばして画面端にClamp
         Vector3 playerViewport = cam.WorldToViewportPoint(player.position);
         Vector3 arrowViewport = playerViewport + dir * 0.5f;
 
@@ -52,7 +57,6 @@ public class ArrowIndicatorController : MonoBehaviour
         arrowViewport.y = Mathf.Clamp(arrowViewport.y, edgeBuffer, 1f - edgeBuffer);
         arrowViewport.z = cam.nearClipPlane + 1f;
 
-        // 画面端に移動
         Vector3 worldPos = cam.ViewportToWorldPoint(arrowViewport);
         transform.position = worldPos;
     }
