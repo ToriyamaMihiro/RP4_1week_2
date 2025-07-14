@@ -34,7 +34,7 @@ public class PlayerAction : MonoBehaviour
     int finishTimer = 100;//終わるまでの時間
     int timer;//経過時間
     int scoreUp = 1000;
-    public static int life = 3;
+    public int life = 3;
 
     float lightTimer = 0f;//１秒ごとに光値を減らしたいのでそれ用のタイマー
 
