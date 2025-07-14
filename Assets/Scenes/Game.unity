@@ -756,7 +756,7 @@ RectTransform:
   - {fileID: 1667407147}
   - {fileID: 303198443}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1811,7 +1811,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &510877416
 SpriteRenderer:
@@ -2332,10 +2332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96be796bf52a0be41b80d77f782935ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothSpeed: 10
-  maxMoveSpeed: 23
+  smoothSpeed: 5
   edgeThreshold: 0.05
-  mouseMoveThreshold: 0.5
+  mouseMoveThreshold: 0.1
 --- !u!1 &744891469 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4024505661470746262, guid: 821dac3ff65c5c24986df327ddf6adc2, type: 3}
@@ -3336,7 +3335,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1294876061
 GameObject:
@@ -4636,7 +4635,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 20
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 669802560}
@@ -4672,7 +4671,7 @@ Transform:
   m_Children:
   - {fileID: 233565527}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1975029779
 MonoBehaviour:
@@ -4813,7 +4812,7 @@ Transform:
   m_Children:
   - {fileID: 1563234426}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2052773323 stripped
 GameObject:
@@ -4880,7 +4879,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2114522843 stripped
 GameObject:
