@@ -1,48 +1,48 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class MouseMoveWithStamina : MonoBehaviour
 {
-    [Header("ˆÚ“®İ’è")]
-    public float moveSpeed = 5f;
-    private float currentSpeed;
+    public float smoothSpeed = 5f;             // è£œé–“ã®é€Ÿã•ï¼ˆåŠ é€Ÿæ„Ÿï¼‰
+    float maxMoveSpeed = 23f;           // 1ç§’ã‚ãŸã‚Šã®æœ€å¤§ç§»å‹•é€Ÿåº¦
+    public float edgeThreshold = 0.05f;
+    public float mouseMoveThreshold = 0.1f;
 
-    private Vector3 targetPos;                   // –Ú•W’n“_
-    private Vector3 previousMousePos;
-
-    [Header("Š´“xİ’è")]
-    public float mouseUpdateThreshold = 5f;      // –Ú•WXV‚É•K—v‚Èƒ}ƒEƒXˆÚ“®‹——£(px)
+    private Camera cam;
+    private Vector3 targetPosition;
+    private Vector3 lastMousePosition;
 
     void Start()
     {
-        currentSpeed = moveSpeed;
-        previousMousePos = Input.mousePosition;
-        targetPos = transform.position;
+        cam = Camera.main;
+        targetPosition = transform.position;
+        lastMousePosition = Input.mousePosition;
     }
 
     void Update()
     {
         Vector3 currentMousePos = Input.mousePosition;
-        float mouseDelta = (currentMousePos - previousMousePos).sqrMagnitude;
+        Vector3 mouseDelta = currentMousePos - lastMousePosition;
+        lastMousePosition = currentMousePos;
 
-        if (mouseDelta > mouseUpdateThreshold)
+        bool isMouseMoving = mouseDelta.sqrMagnitude > mouseMoveThreshold * mouseMoveThreshold;
+
+        Vector3 mouseViewportPos = cam.ScreenToViewportPoint(currentMousePos);
+        bool isMouseAtEdge =
+            mouseViewportPos.x <= edgeThreshold || mouseViewportPos.x >= 1f - edgeThreshold ||
+            mouseViewportPos.y <= edgeThreshold || mouseViewportPos.y >= 1f - edgeThreshold;
+
+        if (isMouseMoving || isMouseAtEdge)
         {
-            // ƒ}ƒEƒX‚ªˆê’èˆÈã“®‚¢‚½‚çƒ^[ƒQƒbƒgXV
-            targetPos = Camera.main.ScreenToWorldPoint(currentMousePos);
-            targetPos.z = transform.position.z;
-            previousMousePos = currentMousePos;
+            currentMousePos.z = Mathf.Abs(cam.transform.position.z);
+            Vector3 worldMousePos = cam.ScreenToWorldPoint(currentMousePos);
+            targetPosition = worldMousePos;
         }
 
-        //ƒXƒs[ƒh‚É‚æ‚Á‚Äi‚ñ‚¾‹——£‚æ‚èˆÚ“®•ª‚ª‘å‚«‚¯‚ê‚Î‹——£‚É‡‚í‚¹‚é
-
-        MoveToTarget();
-    }
-
-    void MoveToTarget()
-    {
-        Vector3 direction = (targetPos - transform.position);
-        if (direction.sqrMagnitude > 0.01f) // ‹——£‚ª‚²‚­¬‚³‚¢‚È‚ç–³‹
-        {
-            transform.position += direction.normalized * currentSpeed * Time.deltaTime;
-        }
+        // ã€Œã‚«ãƒ¡ãƒ©ã‚’ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã«å‘ã‘ã¦æœ€å¤§é€Ÿåº¦ã§ç§»å‹•ã€
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            targetPosition,
+            maxMoveSpeed * Time.deltaTime
+        );
     }
 }

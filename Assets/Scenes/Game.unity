@@ -2332,8 +2332,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96be796bf52a0be41b80d77f782935ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
-  mouseUpdateThreshold: 5
+  smoothSpeed: 10
+  maxMoveSpeed: 23
+  edgeThreshold: 0.05
+  mouseMoveThreshold: 0.5
 --- !u!1 &744891469 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4024505661470746262, guid: 821dac3ff65c5c24986df327ddf6adc2, type: 3}
