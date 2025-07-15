@@ -41,7 +41,7 @@ public class PlayerCopy : MonoBehaviour
             GameObject obj = GameObject.FindWithTag("Player");
             player = obj.GetComponent<PlayerAction>();
             player.isOnemoreCheck = true;
-            PlayerAction.playerScore += 3000;
+            PlayerAction.playerScore += 30000;
 
             player.isGoal = true;
             GoalSporn goalSporn;
