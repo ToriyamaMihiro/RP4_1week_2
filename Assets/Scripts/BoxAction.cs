@@ -47,11 +47,8 @@ public class BoxAction : MonoBehaviour
 
     void Explosion()
     {
-        PlayerAction player;
-        GameObject obj = GameObject.FindWithTag("Player");
-        player = obj.GetComponent<PlayerAction>();
 
-        if (isHit && player.isCanSee)
+        if (isHit)
         {
             timer--;
             mainSpriteRenderer.sprite = hitSprite;
@@ -78,6 +75,9 @@ public class BoxAction : MonoBehaviour
             PlayerAction.isExplosion = true;
             gameObject.SetActive(false);
 
+            PlayerAction player;
+            GameObject obj = GameObject.FindWithTag("Player");
+            player = obj.GetComponent<PlayerAction>();
 
 
             player.lightCurrentPower += addLightPower;
@@ -88,8 +88,11 @@ public class BoxAction : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        PlayerAction player;
+        GameObject obj = GameObject.FindWithTag("Player");
+        player = obj.GetComponent<PlayerAction>();
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && player.isCanSee)
         {
             isHit = true;
         }
