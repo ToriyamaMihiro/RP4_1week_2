@@ -80,7 +80,7 @@ public class BoxAction : MonoBehaviour
             player = obj.GetComponent<PlayerAction>();
 
 
-            player.lightCurrentPower += addLightPower;
+            //player.lightCurrentPower += addLightPower;
 
             isExplosion = false;
         }
