@@ -21,7 +21,7 @@ public class BoxAction : MonoBehaviour
     private SpriteRenderer mainSpriteRenderer;
     private AudioSource mainAudioSource;
     public GameObject bomParticle;
-   
+
 
     // Start is called before the first frame update
     void Start()
@@ -47,20 +47,24 @@ public class BoxAction : MonoBehaviour
 
     void Explosion()
     {
-        if (isHit)
+        PlayerAction player;
+        GameObject obj = GameObject.FindWithTag("Player");
+        player = obj.GetComponent<PlayerAction>();
+
+        if (isHit && player.isCanSee)
         {
             timer--;
             mainSpriteRenderer.sprite = hitSprite;
             particleScript.enabled = true;
-            
+
             if (timer <= 0)
             {
                 isExplosion = true;
                 isHit = false;
-                
+
             }
         }
-        
+
 
         if (isExplosion)
         {
@@ -70,13 +74,11 @@ public class BoxAction : MonoBehaviour
             Instantiate(bomParticle, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);//爆発パーティクル
 
             //スコアアップ
-           // PlayerAction.playerScore += scorePoint;
+            // PlayerAction.playerScore += scorePoint;
             PlayerAction.isExplosion = true;
             gameObject.SetActive(false);
 
-            PlayerAction player;
-            GameObject obj = GameObject.FindWithTag("Player");
-            player = obj.GetComponent<PlayerAction>();
+
 
             player.lightCurrentPower += addLightPower;
 

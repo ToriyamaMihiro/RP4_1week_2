@@ -44,7 +44,7 @@ public class PlayerAction : MonoBehaviour
     public bool isClear;
     public bool isGoal;
     public bool isDeath;
-    bool isCanSee = true;//
+    public bool isCanSee = true;//
     public bool isOnemoreCheck;
     bool isRest;
     bool isScoreUp;
@@ -81,7 +81,7 @@ public class PlayerAction : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            lightTimer += 3;
+            lightTimer += 5;
         }
         else
         {
