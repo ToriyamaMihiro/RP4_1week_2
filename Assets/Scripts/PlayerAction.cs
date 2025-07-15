@@ -35,6 +35,7 @@ public class PlayerAction : MonoBehaviour
     int timer;//経過時間
     int scoreUp = 1000;
     public int life = 3;
+    public static int lifeNum = 0;
 
     float lightTimer = 0f;//１秒ごとに光値を減らしたいのでそれ用のタイマー
 
@@ -48,6 +49,9 @@ public class PlayerAction : MonoBehaviour
     bool isRest;
     bool isScoreUp;
 
+    //shake用
+    public bool isDamege = false;
+
 
     [SerializeField] public static bool isExplosion;
 
@@ -60,6 +64,8 @@ public class PlayerAction : MonoBehaviour
         hinge = GetComponent<HingeJoint2D>();
         SR = GetComponent<SpriteRenderer>();
         playerScore = 0;
+        life = 3;
+        lifeNum = life;
     }
 
     void Update()
@@ -93,6 +99,9 @@ public class PlayerAction : MonoBehaviour
             // タイマーリセット
             lightTimer = 0f;
         }
+
+        //頭
+        lifeNum = life;
     }
 
 

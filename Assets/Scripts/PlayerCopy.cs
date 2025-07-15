@@ -6,6 +6,7 @@ public class PlayerCopy : MonoBehaviour
 {
 
     public bool isGoal=false;
+    
 
     public GameObject Goal;
     // Start is called before the first frame update
@@ -23,6 +24,10 @@ public class PlayerCopy : MonoBehaviour
         player = obj.GetComponent<PlayerAction>();
         if (gameObject.transform.position.y <= -22)
         {
+            if (player.isDamege == false)
+            {
+            player.isDamege = true;
+            }
             player.life--;
             Destroy(this.gameObject);
         }

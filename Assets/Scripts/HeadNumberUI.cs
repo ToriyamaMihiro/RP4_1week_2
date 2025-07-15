@@ -18,7 +18,7 @@ public class HeadNumberUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //headNum = PlayerAction.life;あとで
+        headNum = PlayerAction.lifeNum;
 
 
         //表示

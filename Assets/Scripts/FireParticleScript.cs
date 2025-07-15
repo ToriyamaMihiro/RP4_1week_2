@@ -49,9 +49,9 @@ public class FireParticleScript : MonoBehaviour
         PlayerAction playerScript;
         GameObject obj = GameObject.FindWithTag("Player");
         playerScript = obj.GetComponent<PlayerAction>();
-        if (playerScript.lightCurrentPower < 30)
+        if (playerScript.lightCurrentPower < 10)
         {
-            bornTime = 0.2f;
+            bornTime = 0.07f;
         }
         
     }
