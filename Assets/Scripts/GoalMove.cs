@@ -8,7 +8,11 @@ public class GoalMove : MonoBehaviour
     [SerializeField] int direction;
     [SerializeField] float returnPos = 25;
     [SerializeField] bool isChangeDire = false;
+    [SerializeField] bool isSound=false;
     private Rigidbody2D rb;
+    
+    private AudioSource audioSource;
+    public AudioClip sound;
 
     [SerializeField] GameObject head;
 
@@ -16,6 +20,7 @@ public class GoalMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Move()
@@ -44,6 +49,12 @@ public class GoalMove : MonoBehaviour
         {
             Move();
         }
+
+        if (isSound)
+        {
+            audioSource.PlayOneShot(sound);//音
+            isSound = false;
+        }
     }
 
     void Destroy()
@@ -59,6 +70,7 @@ public class GoalMove : MonoBehaviour
         if (collision.gameObject.tag == "Omori")
         {
             head.SetActive(true);
+            isSound = true;
             Invoke("Destroy", 2f);
         }
     }
