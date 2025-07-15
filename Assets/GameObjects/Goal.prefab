@@ -218,6 +218,7 @@ MonoBehaviour:
   isChangeDire: 0
   isSound: 0
   sound: {fileID: 8300000, guid: 75949103d346ecd4f9ea13182dd79d7a, type: 3}
+  particle: {fileID: 7107940822980964624, guid: c8b181a1608f74c41bacd169ad326ddb, type: 3}
   head: {fileID: 1643009597}
 --- !u!50 &-5444440116687134840
 Rigidbody2D:

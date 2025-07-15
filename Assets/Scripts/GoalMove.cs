@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class GoalMove : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GoalMove : MonoBehaviour
     
     private AudioSource audioSource;
     public AudioClip sound;
+    public GameObject particle;
 
     [SerializeField] GameObject head;
 
@@ -53,6 +55,7 @@ public class GoalMove : MonoBehaviour
         if (isSound)
         {
             audioSource.PlayOneShot(sound);//音
+            
             isSound = false;
         }
     }
@@ -71,6 +74,7 @@ public class GoalMove : MonoBehaviour
         {
             head.SetActive(true);
             isSound = true;
+            Instantiate(particle, new Vector3(transform.position.x, transform.position.y, 0.0f), Quaternion.identity);
             Invoke("Destroy", 2f);
         }
     }
