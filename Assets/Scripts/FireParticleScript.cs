@@ -53,6 +53,10 @@ public class FireParticleScript : MonoBehaviour
         {
             bornTime = 0.07f;
         }
+        else
+        {
+            bornTime = 0.03f;
+        }
         
     }
 }
